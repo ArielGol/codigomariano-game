@@ -7,10 +7,17 @@ public class Usuario {
 	
 	public Usuario (String email) {
 		this.email=email;
-		this.id=this.next_id;
-		this.next_id++;
+		this.id=next_id;
+		next_id++;
 	}
-
+	
+	public boolean tieneEmail(String email) {
+		return this.email.equals(email);
+	}
+	
+	public String getEmail() {
+		return this.email;
+	}
 	
 
 }

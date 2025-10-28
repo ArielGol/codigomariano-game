@@ -15,8 +15,14 @@ public class Partida {
 		this.fechaPartida=new Date();
 		this.preguntas=new Pregunta[Categoria.values().length][CANT_PREGUNTAS];
 	}
+	
+	public void mostrarInfoPartida() {
+		String mensaje="Se inició una partida para el jugador <%s> ,el %te de %tB de %tY, a las %tH:%tM:%tS.";
+		String mensajeFormateado=String.format(mensaje,this.jugador.getEmail(),this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida);
+		System.out.println(mensajeFormateado);
 
-	
-	
+	}
+
+
 	
 }
