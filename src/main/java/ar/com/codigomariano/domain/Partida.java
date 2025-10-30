@@ -1,5 +1,6 @@
 package ar.com.codigomariano.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ar.com.codigomariano.enums.Categoria;
@@ -17,8 +18,9 @@ public class Partida {
 	}
 	
 	public void mostrarInfoPartida() {
-		String mensaje="Se inició una partida para el jugador <%s> ,el %te de %tB de %tY, a las %tH:%tM:%tS.";
-		String mensajeFormateado=String.format(mensaje,this.jugador.getEmail(),this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida,this.fechaPartida);
+		SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String mensaje="Se inició una partida para el jugador <%s> ,el %s.";
+		String mensajeFormateado=String.format(mensaje,this.jugador.getEmail(),formatter.format(this.fechaPartida));
 		System.out.println(mensajeFormateado);
 
 	}
