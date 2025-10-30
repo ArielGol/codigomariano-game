@@ -6,6 +6,7 @@ public class Pregunta {
 	private String codigo;
 	private String texto;
 	private Categoria categoria;
+	private int puntaje;
 	
 	public Pregunta(String codigo, String texto, Categoria categoria) {
 		this.codigo = codigo;
