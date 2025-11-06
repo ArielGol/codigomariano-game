@@ -1,6 +1,6 @@
-# Semana n°10: codigomariano-game
+# Semana n°11: codigomariano-game
 
 ## Diagrama UML
 
 
-![UML semana10](codigomariano-game-semana10.png)
+![UML semana11](uml-semana11.png)
