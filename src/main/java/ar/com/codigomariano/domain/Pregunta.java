@@ -2,7 +2,7 @@ package ar.com.codigomariano.domain;
 
 import ar.com.codigomariano.enums.Categoria;
 
-public class Pregunta {
+public abstract class Pregunta {
 	private String codigo;
 	private String texto;
 	private Categoria categoria;
@@ -13,6 +13,7 @@ public class Pregunta {
 		this.texto = texto;
 		this.categoria = categoria;
 	}
+	public abstract void mostrar();
 	
 	
 
