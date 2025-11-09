@@ -1,4 +1,4 @@
-package ar.com.codigomariano.domain;
+package ar.com.codigomariano.domain.pregunta;
 
 import ar.com.codigomariano.enums.Categoria;
 
@@ -12,6 +12,9 @@ public abstract class Pregunta {
 		this.codigo = codigo;
 		this.texto = texto;
 		this.categoria = categoria;
+	}
+	public String getTexto() {
+		return this.texto;
 	}
 	public abstract void mostrar();
 	

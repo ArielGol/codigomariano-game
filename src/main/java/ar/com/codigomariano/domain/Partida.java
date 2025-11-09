@@ -3,6 +3,7 @@ package ar.com.codigomariano.domain;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import ar.com.codigomariano.domain.pregunta.Pregunta;
 import ar.com.codigomariano.enums.Categoria;
 
 public class Partida {
