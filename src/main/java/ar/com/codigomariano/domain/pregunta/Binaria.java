@@ -5,22 +5,24 @@ import ar.com.codigomariano.enums.Categoria;
 import ar.com.codigomariano.enums.Opcion;
 import ar.com.codigomariano.enums.OpcionBinaria;
 
-public class Binaria extends Pregunta {
+public class Binaria extends Pregunta<OpcionBinaria> {
 	
-	private OpcionBinaria[] opciones;
-	private boolean correcta;
+	private OpcionBinaria correcta;
 
 	public Binaria(String codigo, String texto, Categoria categoria) {
-		super(codigo, texto, categoria);
-		this.opciones=new OpcionBinaria[] {OpcionBinaria.A,OpcionBinaria.B};
+		this(codigo,texto,categoria,PUNTOS_POR_DEFECTO);
 	}
-
-	public void mostrar() {
-		String textoPregunta=getTexto();
-		System.out.println(textoPregunta);
-		for (OpcionBinaria opcionBinaria : opciones) {
-			System.out.println(opcionBinaria);
+	
+	public Binaria(String codigo, String texto, Categoria categoria,int puntos) {
+		super(codigo, texto, categoria, puntos);
 		}
+
+
+
+	@Override
+	protected OpcionBinaria[] inicializarOpciones() {
+		return new OpcionBinaria[] {OpcionBinaria.A,OpcionBinaria.B};
 	}
+	
 
 }

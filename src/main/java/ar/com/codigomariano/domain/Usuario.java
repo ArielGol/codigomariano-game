@@ -18,6 +18,12 @@ public class Usuario {
 	public String getEmail() {
 		return this.email;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [ID=" + this.id + "| EMAIL=" + this.email + "]";
+	}
+	
 	
 
 }

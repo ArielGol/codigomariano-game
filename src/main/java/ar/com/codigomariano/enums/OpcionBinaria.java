@@ -1,20 +1,24 @@
 package ar.com.codigomariano.enums;
 
 public enum OpcionBinaria {
-	A('a',"Verdadero"),
-	B('b',"Falso");
+	A('a',true,"Verdadero"),
+	B('b',false,"Falso");
 	
-	private char opcion;
+	private char letra;
+	private boolean opcion;
 	private String texto;
 	
-	private OpcionBinaria(char opcion,String texto) {
+	private OpcionBinaria(char letra,boolean opcion,String texto) {
+		this.letra=letra;
 		this.opcion=opcion;
 		this.texto=texto;
 	}
+	
 	@Override
 	public String toString() {
-		return this.opcion+". "+this.texto;
+		return this.texto;
 	}
+	
 	
 	
 

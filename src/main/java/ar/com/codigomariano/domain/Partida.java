@@ -20,7 +20,7 @@ public class Partida {
 	
 	public void mostrarInfoPartida() {
 		SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		String mensaje="Se inició una partida para el jugador <%s> ,el %s.";
+		String mensaje="Se inició una partida para el jugador %s ,el %s.";
 		String mensajeFormateado=String.format(mensaje,this.jugador.getEmail(),formatter.format(this.fechaPartida));
 		System.out.println(mensajeFormateado);
 
