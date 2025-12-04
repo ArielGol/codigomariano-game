@@ -11,9 +11,10 @@ public class Partida {
 	private Date fechaPartida;
 	private Pregunta[][] preguntas=new Pregunta[Categoria.values().length][CANT_PREGUNTAS];
 	private Usuario jugador;
+	private static final String USUARIO_ERR="El jugador no debe ser nulo";
 	
 	public Partida(Usuario jugador) {
-		this.jugador=jugador;
+		setJugador(jugador);
 		this.fechaPartida=new Date();
 		this.preguntas=new Pregunta[Categoria.values().length][CANT_PREGUNTAS];
 	}
@@ -24,6 +25,10 @@ public class Partida {
 		String mensajeFormateado=String.format(mensaje,this.jugador.getEmail(),formatter.format(this.fechaPartida));
 		System.out.println(mensajeFormateado);
 
+	}
+	private void setJugador(Usuario jugador) {
+		if(jugador==null) throw new IllegalArgumentException(USUARIO_ERR);
+		this.jugador=jugador;
 	}
 
 

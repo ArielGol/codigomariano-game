@@ -9,6 +9,7 @@ import ar.com.codigomariano.domain.pregunta.Binaria;
 import ar.com.codigomariano.domain.pregunta.Multiple;
 import ar.com.codigomariano.enums.Categoria;
 import ar.com.codigomariano.enums.Opcion;
+import ar.com.codigomariano.enums.OpcionBinaria;
 
 public class App {
 	private static Scanner scanner=new Scanner(System.in);
@@ -20,13 +21,13 @@ public class App {
     	solicitarEmail(juego);
     	iniciarPartida(juego);
     	
-    	Multiple pregunta1=new Multiple("M01","¿En qué año se produjo el descubrimiento de América?",Categoria.HISTORIA);
+    	Multiple pregunta1=new Multiple("M01","¿En qué año se produjo el descubrimiento de América?",Categoria.HISTORIA,Opcion.A);
     	pregunta1.sumarOpcion(Opcion.A,"1492");
     	pregunta1.sumarOpcion(Opcion.B,"1516");
     	pregunta1.sumarOpcion(Opcion.C,"1671");
     	pregunta1.sumarOpcion(Opcion.D,"1744");
     	pregunta1.mostrar();
-    	Binaria pregunta2=new Binaria("B01","¿El ajedrez es un deporte olímpico?",Categoria.DEPORTES);
+    	Binaria pregunta2=new Binaria("B01","¿El ajedrez es un deporte olímpico?",Categoria.DEPORTES,OpcionBinaria.B);
     	pregunta2.mostrar();
     	scanner.close();
     
