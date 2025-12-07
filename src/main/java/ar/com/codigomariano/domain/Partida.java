@@ -7,11 +7,11 @@ import ar.com.codigomariano.domain.pregunta.Pregunta;
 import ar.com.codigomariano.enums.Categoria;
 
 public class Partida {
+	private static final String USUARIO_ERR="El jugador no debe ser nulo";
 	private final int CANT_PREGUNTAS=10;
 	private Date fechaPartida;
 	private Pregunta[][] preguntas=new Pregunta[Categoria.values().length][CANT_PREGUNTAS];
 	private Usuario jugador;
-	private static final String USUARIO_ERR="El jugador no debe ser nulo";
 	
 	public Partida(Usuario jugador) {
 		setJugador(jugador);

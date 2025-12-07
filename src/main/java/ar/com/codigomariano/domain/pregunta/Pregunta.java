@@ -17,7 +17,6 @@ public abstract class Pregunta<O,T> {
 	private T correcta;
 	
 	
-	//Este es el constructor más generico
 	public Pregunta(String codigo, String texto, Categoria categoria,int puntos,T correcta) {
 		setCodigo(codigo);
 		setTexto(texto);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.codigomariano.domain.pregunta.Pregunta;
+import ar.com.codigomariano.exceptions.EmailNotFoundException;
 
 public class Juego {
 	private List<Pregunta> preguntas=new ArrayList<Pregunta>();
@@ -11,13 +12,11 @@ public class Juego {
 	
 	
 	public void agregarUsuario(String email) {
-		if(email!=null) {
 			Usuario usuario=new Usuario(email);
 			usuarios.add(usuario);			
-		}
-
 	}
-	public Usuario buscarUsuario(String email) {
+	
+	public Usuario buscarUsuario(String email) throws EmailNotFoundException {
 		Usuario encontrado=null;
 		int index=0;
 		while(encontrado==null&&index<this.usuarios.size()) {
@@ -27,10 +26,13 @@ public class Juego {
 			}
 			index++;
 		}
+		if(encontrado==null) {
+			throw new EmailNotFoundException(email);
+		}
 		return encontrado;
 	}
 	
-	public boolean existeUsuario(String email) {
+	public boolean existeUsuario(String email) throws EmailNotFoundException {
 		Usuario usuario=buscarUsuario(email);
 		return usuario!=null;
 	}

@@ -5,6 +5,7 @@ public class Usuario {
 	private static final int MAX_LENGTH=75;
 	private static final String EMAIL_ERR="El mail del usuario debe tener entre 15 y 75 caracteres.";
 	private static final String EMAIL_INVALID="El mail no debe ser nulo ni vacio";
+	private static final String EMAIL_FORMATO="El formato del mail no es válido";
 	private static int next_id=1;
 	private Integer id;
 	private String email;
@@ -34,6 +35,8 @@ public class Usuario {
 			throw new IllegalArgumentException(EMAIL_INVALID);
 		}else if(email.length()<MIN_LENGTH||email.length()>MAX_LENGTH) {
 			throw new IllegalArgumentException(EMAIL_ERR);
+		}else if(!email.contains("@")) {
+			throw new IllegalArgumentException(EMAIL_FORMATO);
 		}
 		this.email=email;
 	}
