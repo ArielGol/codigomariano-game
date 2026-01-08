@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+	<body>
+		<div layout:fragment="content">
+			<h1>Hola Mundo!</h1>
+			<a th:href="@{/partida/init}" th:text="#{iniciar.partida}"></a>
+		</div>
+	</body>
+
+</html>
