@@ -9,15 +9,17 @@ import ar.com.codigomariano.forms.UserForm;
 
 @Controller
 public class PartidaController {
+	
+	private final String PATH="/partidas";
 
-	@GetMapping("/partida/init")
+	@GetMapping("/partida/usuarios")
 	public String init(Model model) {
 		model.addAttribute("form", new UserForm());
-		return "/partidas/init";
+		return PATH+"/usuarios";
 	}
 	@PostMapping("/partida/iniciar")
 	public String start(UserForm formulario) {
 		formulario.getUsername();
-		return "/partidas/success";
+		return PATH+"/success";
 	}
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+	<body>
+		<div layout:fragment="content">
+			<h1 th:text="#{iniciar.usuarios}"></h1>
+			<form id="iniciarFrm" th:object="${form}" th:action="@{/}">
+				<input id="username" type="text"  />
+				<button id="cancelarBtn" type="submit" th:text="#{cancelar.btn}" ></button>
+				<button id="guardarBtn" type="button"  th:text="#{guardar.btn}" ></button>
+			</form>
+		</div>
+	</body>
+</html>
