@@ -6,15 +6,15 @@ public class Usuario {
 	private static final String EMAIL_ERR="El mail del usuario debe tener entre 15 y 75 caracteres.";
 	private static final String EMAIL_INVALID="El mail no debe ser nulo ni vacio";
 	private static final String EMAIL_FORMATO="El formato del mail no es válido";
-	private static int next_id=1;
+	//private static int next_id=1;
 	private Integer id;
 	private String email;
 	
 	
 	public Usuario (String email) {
 		setEmail(email);
-		this.id=next_id;
-		next_id++;
+		//this.id=next_id;
+		//next_id++;
 	}
 	
 	public boolean tieneEmail(String email) {

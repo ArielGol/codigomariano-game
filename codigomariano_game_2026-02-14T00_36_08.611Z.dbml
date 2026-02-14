@@ -1,0 +1,83 @@
+Table USUARIOS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	email varchar(75)
+}
+
+Table JUEGOS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+}
+
+Table PREGUNTAS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	codigo varchar(255)
+	texto text(65535)
+	puntaje integer
+	opciones varchar(255)
+	correcta varchar(255)
+	categoria_id integer
+}
+
+Table PREGUNTAS_JUEGOS [headercolor: #175e7a] {
+	pregunta_id integer [ pk, increment, not null, unique ]
+	juego_id integer [ pk ]
+}
+
+Table CATEGORIAS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	nombre varchar(255)
+	key varchar(255)
+}
+
+Table MULTIPLES [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	opcion_id integer
+}
+
+Table BINARIAS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	opcion_binaria_id integer
+}
+
+Table OPCIONES [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	caracter char(1)
+}
+
+Table OPCIONES_BINARIAS [headercolor: #175e7a] {
+	id integer [ pk, increment, not null, unique ]
+	letra char(1)
+	texto varchar(255)
+	opcion boolean
+}
+
+Ref fk_JUEGOS_id_PREGUNTAS_JUEGOS {
+	JUEGOS.id < PREGUNTAS_JUEGOS.pregunta_id [ delete: no action, update: no action ]
+}
+
+Ref fk_PREGUNTAS_id_PREGUNTAS_JUEGOS {
+	PREGUNTAS.id < PREGUNTAS_JUEGOS.juego_id [ delete: no action, update: no action ]
+}
+
+Ref fk_PREGUNTAS_categoria_id_CATEGORIAS {
+	PREGUNTAS.categoria_id > CATEGORIAS.id [ delete: no action, update: no action ]
+}
+
+Ref fk_USUARIOS_id_JUEGOS {
+	USUARIOS.id > JUEGOS.id [ delete: no action, update: no action ]
+}
+
+Ref fk_PREGUNTAS_id_MULTIPLES {
+	PREGUNTAS.id - MULTIPLES.id [ delete: no action, update: no action ]
+}
+
+Ref fk_PREGUNTAS_id_BINARIAS {
+	PREGUNTAS.id - BINARIAS.id [ delete: no action, update: no action ]
+}
+
+Ref fk_MULTIPLES_opcion_id_OPCIONES {
+	MULTIPLES.opcion_id > OPCIONES.id [ delete: no action, update: no action ]
+}
+
+Ref fk_BINARIAS_opcion_binaria_id_OPCIONES_BINARIAS {
+	BINARIAS.opcion_binaria_id > OPCIONES_BINARIAS.id [ delete: no action, update: no action ]
+}
