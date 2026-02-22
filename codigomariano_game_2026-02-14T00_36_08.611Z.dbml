@@ -1,6 +1,7 @@
 Table USUARIOS [headercolor: #175e7a] {
 	id integer [ pk, increment, not null, unique ]
 	email varchar(75)
+	juego_id integer
 }
 
 Table JUEGOS [headercolor: #175e7a] {
@@ -18,8 +19,12 @@ Table PREGUNTAS [headercolor: #175e7a] {
 }
 
 Table PREGUNTAS_JUEGOS [headercolor: #175e7a] {
-	pregunta_id integer [ pk, increment, not null, unique ]
+	pregunta_id integer [ pk, increment, not null ]
 	juego_id integer [ pk ]
+
+	indexes {
+		(pregunta_id, juego_id) [ name: 'PREGUNTAS_JUEGOS_index_0' ]
+	}
 }
 
 Table CATEGORIAS [headercolor: #175e7a] {
@@ -62,10 +67,6 @@ Ref fk_PREGUNTAS_categoria_id_CATEGORIAS {
 	PREGUNTAS.categoria_id > CATEGORIAS.id [ delete: no action, update: no action ]
 }
 
-Ref fk_USUARIOS_id_JUEGOS {
-	USUARIOS.id > JUEGOS.id [ delete: no action, update: no action ]
-}
-
 Ref fk_PREGUNTAS_id_MULTIPLES {
 	PREGUNTAS.id - MULTIPLES.id [ delete: no action, update: no action ]
 }
@@ -80,4 +81,8 @@ Ref fk_MULTIPLES_opcion_id_OPCIONES {
 
 Ref fk_BINARIAS_opcion_binaria_id_OPCIONES_BINARIAS {
 	BINARIAS.opcion_binaria_id > OPCIONES_BINARIAS.id [ delete: no action, update: no action ]
+}
+
+Ref fk_USUARIOS_juego_id_JUEGOS {
+	USUARIOS.juego_id > JUEGOS.id [ delete: no action, update: no action ]
 }
