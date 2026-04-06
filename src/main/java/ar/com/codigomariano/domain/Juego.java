@@ -5,10 +5,29 @@ import java.util.List;
 
 import ar.com.codigomariano.domain.pregunta.Pregunta;
 import ar.com.codigomariano.exceptions.EmailNotFoundException;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-public class Juego {
+@Entity
+@Table(name="JUEGOS")
+public class Juego extends Persistible {
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="PREGUNTAS_JUEGOS",joinColumns = @JoinColumn(name="Juego_id"),
+			inverseJoinColumns = @JoinColumn(name="Pregunta_id"))
+	
 	private List<Pregunta> preguntas=new ArrayList<Pregunta>();
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="Juego_id",referencedColumnName = "ID")
 	private List<Usuario> usuarios=new ArrayList<Usuario>();
+	
+	//Just for Hibernate
+	Juego(){}
 	
 	
 	public void agregarUsuario(String email) {

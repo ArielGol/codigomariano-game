@@ -8,14 +8,14 @@ public enum Categoria {
 	DEPORTES("leisure"),
 	HISTORIA("history");
 	
-	private String key;
+	private String clave;
 	
-	private Categoria(String key) {
-		this.key=key;
+	private Categoria(String clave) {
+		this.clave=clave;
 	}
 	
-	public String key() {
-		return this.key;
+	public String clave() {
+		return this.clave;
 	}
 
 }
