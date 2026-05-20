@@ -8,4 +8,4 @@
 
 ## Diseño de base de datos
 
-![Diseño de BD](codigomariano_game_disenio_BD.png)
+![Diseño de BD](diagramaBaseDeDatosSemana17.jpeg)

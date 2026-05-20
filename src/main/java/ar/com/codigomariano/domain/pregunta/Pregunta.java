@@ -18,13 +18,12 @@ import jakarta.persistence.Transient;
 @Entity
 @Table(name = "PREGUNTAS")
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "discriminator",discriminatorType = DiscriminatorType.STRING)
-public abstract class Pregunta<O,T> extends Persistible {
+public abstract class Pregunta extends Persistible {
 	protected final static int PUNTOS_POR_DEFECTO=100;
 	private static final String CODIGO_ERR="El código no debe ser nulo ni vacío.";
 	private static final String TEXTO_ERR="El texto no debe ser nulo ni vacío.";
 	private static final String CATEGORIA_ERR="La categoría no debe ser nula.";
-	private static final String CORRECTA_ERR="La opción correcta no debe ser nula.";
+	protected static final String CORRECTA_ERR="La opción correcta no debe ser nula.";
 	@Column(name="Codigo")
 	private String codigo;
 	
@@ -38,47 +37,18 @@ public abstract class Pregunta<O,T> extends Persistible {
 	@Column(name="Puntaje")
 	private int puntaje;
 	
-	@Column(name="Opciones")
-	private String opcionesPersistidas;
-	
-	@Transient
-	private O[] opciones;
-	
-	
-	@Column(name="Correcta")
-	@Enumerated(EnumType.STRING)
-	private T correcta;
 	
 	//Just for Hibernate
 	Pregunta(){}
 	
 	
-	public Pregunta(String codigo, String texto, Categoria categoria,int puntos,T correcta) {
+	public Pregunta(String codigo, String texto, Categoria categoria,int puntos) {
 		setCodigo(codigo);
 		setTexto(texto);
 		setCategoria(categoria);
-		setCorrecta(correcta);
 		this.puntaje=puntos;
-		this.opciones=inicializarOpciones();
 	}
 	
-	
-	protected void asignar(Opcion opcion,O valor) {
-		this.opciones[opcion.ordinal()]=valor;
-	}
-
-	
-	public void mostrar() {
-		System.out.println(this.texto);
-		for (int i = 0; i < opciones.length; i++) {
-			System.out.println(Opcion.values()[i]+"."+opciones[i]);
-		}
-		
-	}
-	
-	public boolean esRespuestaCorrecta(T opcionSeleccionada) {
-		return this.correcta.equals(opcionSeleccionada);
-	}
 
 
 	private void setCodigo(String codigo) {
@@ -98,14 +68,12 @@ public abstract class Pregunta<O,T> extends Persistible {
 		this.categoria = categoria;
 	}
 
-
-	private void setCorrecta(T correcta) {
-		if(correcta==null) throw new IllegalArgumentException(CORRECTA_ERR);
-		this.correcta = correcta;
-	}
 	
-	//Todo metodo abstracto al final
-		protected abstract O[] inicializarOpciones();
-		
 
+		public String getTexto() {
+		return texto;
+	}
+
+
+		public abstract void mostrar();
 }

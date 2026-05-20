@@ -16,25 +16,22 @@ public class UserServiceImp implements UserService {
 	
 	//Aca implemento metodos de negocio
 	
-	public void guardarUsuario(Usuario user) {
-		// validaciones, logica previa a la persistencia
-		this.repository.save(user);
+	public Usuario guardarUsuario(Usuario user) {
+		return this.repository.save(user);
 	}
 	
+	@Override
 	public Usuario obtener(Long id) {
-		Usuario user;
-		user =this.repository.getReferenceById(id);
-		return user;
+	    return this.repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public boolean existsUser(String email) {
-		boolean exists=false;
-		if(email !=null) {
-			List<Usuario> usuarios=this.repository.findByEmail(email);
-			exists=usuarios.isEmpty();
-		}
-		return false;
+	    if (email != null) {
+	        List<Usuario> usuarios = this.repository.findByEmail(email);
+	        return !usuarios.isEmpty(); // ! porque si la lista NO está vacía, existe
+	    }
+	    return false;
 	}
 	
 }
