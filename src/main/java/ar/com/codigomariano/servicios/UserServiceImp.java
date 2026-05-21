@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ar.com.codigomariano.domain.Usuario;
 import ar.com.codigomariano.repositorios.UserRepository;
@@ -15,7 +16,7 @@ public class UserServiceImp implements UserService {
 	private UserRepository repository;
 	
 	//Aca implemento metodos de negocio
-	
+	@Override
 	public Usuario guardarUsuario(Usuario user) {
 		return this.repository.save(user);
 	}

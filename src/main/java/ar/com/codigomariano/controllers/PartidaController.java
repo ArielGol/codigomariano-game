@@ -12,14 +12,10 @@ public class PartidaController {
 	
 	private final String PATH="/partidas";
 
-	@GetMapping("/partida/usuarios")
+	@GetMapping("/partida/init")
 	public String init(Model model) {
 		model.addAttribute("form", new UserForm());
-		return PATH+"/usuarios";
+		return PATH+"/init";
 	}
-	@PostMapping("/partida/iniciar")
-	public String start(UserForm formulario) {
-		formulario.getUsername();
-		return PATH+"/success";
-	}
+
 }

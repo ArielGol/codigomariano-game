@@ -16,12 +16,6 @@ public class Home {
 
 	@GetMapping("/")
 	public String home() {
-		Usuario usuario =new Usuario ("arielgol@gmail.com");
-		System.out.println(usuario.getId());
-		this.service.guardarUsuario(usuario);
-		System.out.println(usuario.getId());
-		
-		usuario=this.service.obtener(1l);
 		
 		return "home";
 	}
